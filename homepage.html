@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype Games</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* CSS Variables for theme */
+        :root {
+            --bg-color: #f3f4f6;
+            --text-color: #1f2937;
+            --header-color: #111827;
+            --card-bg-color: #ffffff;
+            --footer-text-color: #6b7280;
+            --button-bg-color: #4f46e5;
+            --button-hover-bg-color: #4338ca;
+            --button-text-color: #ffffff;
+            --button-shadow: rgba(0, 0, 0, 0.1);
+            --tos-link-color: #4f46e5;
+        }
+
+        .dark {
+            --bg-color: #1a202c;
+            --text-color: #e2e8f0;
+            --header-color: #ffffff;
+            --card-bg-color: #2d3748;
+            --footer-text-color: #9ca3af;
+            --button-bg-color: #667eea;
+            --button-hover-bg-color: #5a67d8;
+            --button-text-color: #ffffff;
+            --button-shadow: rgba(255, 255, 255, 0.05);
+            --tos-link-color: #667eea;
+        }
+
+        /* Set a smooth transition for color changes */
+        body,
+        .container,
+        h1,
+        p,
+        footer,
+        a,
+        button {
+            transition: all 0.3s ease;
+        }
+
+        /* Base styles from variables */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Font from Google Fonts for a modern look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex flex-col items-center justify-center py-10">
+
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="absolute top-4 right-4 text-3xl cursor-pointer hover:scale-110 transform transition-transform">☀️</button>
+
+    <main class="w-full max-w-xl mx-auto p-8 rounded-2xl shadow-xl bg-white dark:bg-gray-800">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-center mb-6 text-gray-900 dark:text-white">
+            Games
+        </h1>
+        <p class="text-center text-lg text-gray-600 dark:text-gray-400 mb-8">
+            Explore our collection of games.
+        </p>
+        
+        <ul class="space-y-4">
+            <li>
+                <a href="https://testiil.w3spaces.com/page2.html" class="block w-full text-center py-4 px-6 rounded-xl text-lg font-bold text-white transition-all duration-300 transform hover:scale-105 bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-600 hover:to-blue-700 shadow-lg">
+                    Pixel Adventure
+                </a>
+            </li>
+            <li>
+                <a href="https://testiil.w3spaces.com/page3.html" class="block w-full text-center py-4 px-6 rounded-xl text-lg font-bold text-white transition-all duration-300 transform hover:scale-105 bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 shadow-lg">
+                    Bolt Clicker
+                </a>
+            </li>
+            <li>
+                <a href="https://testiil.w3spaces.com/page4.html" class="block w-full text-center py-4 px-6 rounded-xl text-lg font-bold text-white transition-all duration-300 transform hover:scale-105 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 shadow-lg">
+                    Game
+                </a>
+            </li>
+        </ul>
+    </main>
+    
+    <footer class="mt-12 text-center text-sm">
+        <p class="text-gray-600 dark:text-gray-400">
+            <strong>A friendly warning:</strong> Don't play while you have work to do.
+        </p>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">
+            If you get punished, it is not our fault.
+        </p>
+        <a href="https://testiil.w3spaces.com/tos.html" class="inline-block text-indigo-600 dark:text-indigo-400 hover:underline font-medium">
+            Read our Terms of Service
+        </a>
+    </footer>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        // Function to set the initial theme based on local storage or system preference
+        function setInitialTheme() {
+            const storedTheme = localStorage.theme;
+
+            if (storedTheme === 'dark') {
+                htmlElement.classList.add('dark');
+                themeToggleBtn.textContent = '🌙';
+            } else if (storedTheme === 'light') {
+                htmlElement.classList.remove('dark');
+                themeToggleBtn.textContent = '☀️';
+            } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                // Default to system preference if no theme is stored
+                htmlElement.classList.add('dark');
+                themeToggleBtn.textContent = '🌙';
+            } else {
+                htmlElement.classList.remove('dark');
+                themeToggleBtn.textContent = '☀️';
+            }
+        }
+        
+        // Add a click event listener to the button
+        themeToggleBtn.addEventListener('click', () => {
+            // Toggle the 'dark' class on the HTML element
+            htmlElement.classList.toggle('dark');
+
+            // Save the user's preference to local storage
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+                themeToggleBtn.textContent = '🌙';
+            } else {
+                localStorage.theme = 'light';
+                themeToggleBtn.textContent = '☀️';
+            }
+        });
+
+        // Set the initial theme when the page loads
+        setInitialTheme();
+    </script>
+</body>
+</html>
