@@ -19,7 +19,6 @@
             --button-shadow: rgba(0, 0, 0, 0.1);
             --tos-link-color: #4f46e5;
         }
-
         .dark {
             --bg-color: #1a202c;
             --text-color: #e2e8f0;
@@ -32,7 +31,6 @@
             --button-shadow: rgba(255, 255, 255, 0.05);
             --tos-link-color: #667eea;
         }
-
         /* Set a smooth transition for color changes */
         body,
         .container,
@@ -43,21 +41,18 @@
         button {
             transition: all 0.3s ease;
         }
-
         /* Base styles from variables */
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: 'Inter', sans-serif;
         }
-
         /* Font from Google Fonts for a modern look */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
     </style>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex flex-col items-center justify-center py-10">
     <button id="theme-toggle" class="absolute top-4 right-4 text-3xl cursor-pointer hover:scale-110 transform transition-transform">☀️</button>
-
     <main class="w-full max-w-xl mx-auto p-8 rounded-2xl shadow-xl bg-white dark:bg-gray-800">
         <h1 class="text-4xl sm:text-5xl font-extrabold text-center mb-6 text-gray-900 dark:text-white">
             Games
